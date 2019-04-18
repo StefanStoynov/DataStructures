@@ -1,30 +1,23 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
-
 public class Main {
-
-    public static void main(String[] args) throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        List<Integer> nums = new ArrayList<>();
-
-        String line = reader.readLine();
-        while (!("").equals(line)) {
-            int num = Integer.parseInt(line);
-            nums.add(num);
-            line = reader.readLine();
-        }
-        Integer sum = findSum(nums, 0);
-        System.out.println(sum);
-
+    public static void main(String[] args) {
+        int[] elements = {1, 2, 3, 4, 5};
+        System.out.println(sum(elements, 0));
+        System.out.println(factorial(5));
     }
 
-    static Integer findSum(List<Integer> collection, int index) {
-        if (index == collection.size()) {
-            return 0;
+    public static int sum(int[] numbers, int index) {
+        if (index == numbers.length - 1) {
+            return numbers[index];
         }
-        return collection.get(index) + findSum(collection, index + 1);
+
+        return numbers[index] + sum(numbers, index + 1);
+    }
+
+    public static int factorial(int num) {
+
+        if (num == 0) {
+            return 1;
+        }
+        return num * factorial(num - 1);
     }
 }
